@@ -16,10 +16,19 @@ void bubble_sort(int n , vector<int> &arr){
         }
     }
 }
+void selection_sort(int n , vector<int> &arr){
+    for(int i = 0 ; i <= n -1 ; i++){
+        int j = i ;
+        while( j > 0 && arr[j-1] > arr[j]){
+            swap(arr[j-1] , arr[j]);
+            j--;
+        }
+    }
+}
 int main(){
     vector<int> arr{5,3,1,2,6};
     int n = arr.size();
-    bubble_sort(n,arr);
+    selection_sort(n,arr);
 
     for(auto it : arr){
         cout << it << endl;
