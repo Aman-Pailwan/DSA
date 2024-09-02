@@ -8,11 +8,25 @@ def kadanes(nums : list[int]) -> int:
         maxSum = max(maxSum , currSum)
     return maxSum
 
+def slidingWindow(nums : list[int]) -> list[int]:
+    currSum = 0
+    maxSum = nums[0]
+    maxL , maxR = 0 , 0
+    L = 0
 
+    for R in range(len(nums)):
+        if currSum < 0:
+            currSum = 0
+            L = R
+        currSum += nums[R]
+        if currSum > maxSum:
+            maxSum = currSum
+            maxL , maxR = L , R
+    return [maxL , maxR]
 
 def main():
     nums = [4,-1,2,-7,3,4]
-    print(kadanes(nums))
+    print(slidingWindow(nums))
 
 if __name__ =="__main__":
     main()
